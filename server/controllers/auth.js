@@ -19,7 +19,6 @@ export const signup = async (req, res, next) => {
 
 export const signin = async (req, res, next) => {
     const {login, password} = req.body;
-    console.log(login);
     const user = await User.findOne({login});
 
     if (!user) {
