@@ -12,6 +12,7 @@ import config from './config/config';
 
 import authRouter from './routes/auth';
 import userRouter from './routes/user';
+import taskRouter from './routes/task';
 import imagesRouter from './routes/images';
 
 const storage = multer.diskStorage({
@@ -38,6 +39,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use('/api', authRouter);
 app.use('/api', checkToken, getUser, userRouter);
 app.use('/api', checkToken, getUser, upload.single('file'), imagesRouter);
+app.use('/api', checkToken, getUser, taskRouter);
 
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, '../index.html'));
