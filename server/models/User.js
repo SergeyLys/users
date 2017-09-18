@@ -7,7 +7,7 @@ const UserSchema = new Schema({
     name: String,
     age: Number,
     photo: {data: Buffer, contentType: String},
-    admin: {type: Boolean, default: false}
+    banned: {type: Boolean, default: false}
 });
 
 UserSchema.pre('save', async function (next) {

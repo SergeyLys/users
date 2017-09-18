@@ -30,10 +30,17 @@ export const signin = async (req, res, next) => {
 
     try {
         const result = await user.comparePasswords(password);
-    } catch (e) {
+        
+        if (result === false) {
+            return next({
+                status: 400,
+                message: 'Bad credentials'
+            });
+        }
+    } catch ({message}) {
         return next({
             status: 400,
-            message: 'Bad credentials'
+            message
         });
     }
 
