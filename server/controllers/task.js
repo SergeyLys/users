@@ -1,6 +1,6 @@
 import Task from '../models/Task';
 
-export async function ctreate(req, res, next) {
+export async function create(req, res, next) {
     const taskData = req.body;
     const userId = req.user._id;
     taskData.userId = userId;

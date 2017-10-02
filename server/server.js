@@ -15,9 +15,6 @@ import userRouter from './routes/user';
 import taskRouter from './routes/task';
 import imagesRouter from './routes/images';
 
-const storage = multer.diskStorage({
-    
-})
 const upload = multer( {dest: path.join(__dirname, '../uploads')} )
 const app = express();
 
