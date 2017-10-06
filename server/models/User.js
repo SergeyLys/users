@@ -3,9 +3,13 @@ import bcrypt from 'bcryptjs';
 
 const UserSchema = new Schema({
     login: {type: String, required: true, unique: true, lowercase: true, index: true},
+    nickName: {type: String, required: true, unique: true, index: true},
     password: {type: String, required: true},
     name: String,
+    surname: String,
     age: Number,
+    country: String,
+    city: String,
     photo: {data: Buffer, contentType: String},
     banned: {type: Boolean, default: false}
 });

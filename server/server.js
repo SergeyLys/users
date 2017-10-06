@@ -13,6 +13,7 @@ import config from './config/config';
 import authRouter from './routes/auth';
 import userRouter from './routes/user';
 import taskRouter from './routes/task';
+import searchRouter from './routes/search';
 import imagesRouter from './routes/images';
 
 const upload = multer( {dest: path.join(__dirname, '../uploads')} )
@@ -33,7 +34,8 @@ app.use(cors({origin: '*'}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use('/api', authRouter);
+app.use('/api/data', authRouter);
+app.use('/api', searchRouter);
 app.use('/api', checkToken, getUser, userRouter);
 app.use('/api', checkToken, getUser, upload.single('file'), imagesRouter);
 app.use('/api', checkToken, getUser, taskRouter);

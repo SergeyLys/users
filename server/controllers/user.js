@@ -54,7 +54,10 @@ export async function changeUserInfo(req, res, next) {
         var user = await User.findOne({_id: req.token._id});
         user.age = req.body.age || user.age;
         user.name = req.body.name || user.name;
+        user.surname = req.body.surname || user.surname;
         user.photo = req.body.photo || user.photo;
+        user.country = req.body.country || user.country;
+        user.city = req.body.city || user.city;
         user.save();
     } catch ({message}) {
         return next({

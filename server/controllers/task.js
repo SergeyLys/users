@@ -5,6 +5,10 @@ export async function create(req, res, next) {
     const userId = req.user._id;
     taskData.userId = userId;
 
+    console.log(req.body.url.slice('/').pop());
+
+    // if (req.body.url.slice('/').pop())
+
     try {
         var task = await Task.create(taskData);
     } catch ({message}) {
@@ -18,10 +22,11 @@ export async function create(req, res, next) {
 }
 
 export async function getAll(req, res, next) {
-    const userId = req.user._id;
+    const { token } = req;
+    let tasks;
 
     try {
-        var tasks = await Task.find({userId: userId});
+        tasks = await Task.find({userId: token._id});
     } catch ({message}) {
         return next({
             status: 400,
